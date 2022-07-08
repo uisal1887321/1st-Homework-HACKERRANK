@@ -1,0 +1,42 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'theLoveLetterMystery' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts STRING s as parameter.
+#
+
+def theLoveLetterMystery(s):
+    # Write your code here
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    rev = s[::-1]
+    ans = 0
+    for i in range(len(s) // 2):
+        op1 = s[i]
+        op2 = rev[i]
+        pos1 = alphabet.find(op1)
+        pos2 = alphabet.find(op2)
+        ans += abs(pos1 - pos2)
+    return ans
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    q = int(input().strip())
+
+    for q_itr in range(q):
+        s = input()
+
+        result = theLoveLetterMystery(s)
+
+        fptr.write(str(result) + '\n')
+
+    fptr.close()
+    print(theLoveLetterMystery(s))
